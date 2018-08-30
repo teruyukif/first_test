@@ -11,9 +11,15 @@ y = tf.nn.sigmoid(tf.matmul(x, w) + b)
 #交差エントロピー誤差関数
 cross_entropy = - tf.reduce_sum(t * tf.log(y) + (1 - t) * tf.log(1 - y))
 
-＃勾配降下法
+#勾配降下法
 train_step = tf.train.GradientDescentOptimizer (0.1).minimize(cross_entropy)
 
+correct_prediction = tf.equal(tf.to_float(tf.greater(y, 0.5)), t)
 
+
+'''
+モデル学習
+'''
+＃ORゲート
 
 #print(w)

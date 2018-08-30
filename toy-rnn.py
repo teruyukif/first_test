@@ -20,7 +20,20 @@ model.fit(X_train, Y_train,
           validation_data=(X_validation,Y_validation),
           callbacks=[early_stopping])
 
+truncate = maxlen
 
+Z = X[:1]
+
+original = [f[i] for i in range(maxlen)]
+predicted = [none for i in range(maxlen)]
+
+for i in range(length_of_sequence - maxlen +1):
+    z_ = Z[-1:]
+    y_ = model.predict(z_)
+    sequence_ = np.concatenate(
+        (z_.resharp(maxlen, n_in)[1:], y_),axis=0).reshape(1, maxlen, n_in)
+    Z = np.append(Z, sequence_, axis=0)
+    predicted.append(y_.reshape(-1)))
 
 
 #import numpy as np
